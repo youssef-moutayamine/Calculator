@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(32, 32, 32, 0.966);
+    gap: 2rem;
+    padding: 1rem;
+
+}
+
+h1 {
+    color: aliceblue;
+    font-weight: 800;
+    font-family: monospace;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeSlide 2s ease-in-out infinite alternate;}
+
+@keyframes fadeSlide {
+    0% {
+        opacity: 0.5;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(-10px);
+    }
+}
+
+span {
+    color: rgb(187, 1, 1);
+
+
+}
+
+#calculator {
+    background-color: black;
+    width: fit-content;
+    padding: 1rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem auto;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    position: relative;
+}
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+#calculator ::after,
+#calculator::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* background-image: conic-gradient(#ff4545,#00ff49,#006aff,#ff0095); */
+    background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    z-index: -1;
+    padding: 3px;
+    border-radius: 20px;
+    animation: 3s spin linear infinite;
+}
+
+#calculator::before {
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+
+    to {
+        --angle: 360deg;
+    }
+}
+
+#display {
+    width: fit-content;
+    border-radius: 5px;
+    padding: 1vh;
+    border: none;
+}
+
+.rows {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 5px auto;
+}
+
+button {
+    height: 40px;
+    width: 40px;
+    font-size: 1.5rem;
+    border-radius: 50%;
+
+}
+
+.deleteBtn {
+    background-color: #FFFF00;
+    font-size: 20px;
+}
+
+.clearBtn {
+    background-color: red;
+}
+
+.mathBtn {
+    background-color: #ff7300;
+}
+
+.calculateBtn {
+    background-color: green;
+}
